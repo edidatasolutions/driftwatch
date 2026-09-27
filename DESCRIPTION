@@ -1,0 +1,20 @@
+Package: driftwatch
+Title: Sequential Monitoring of Item Parameter Drift
+Version: 0.1.0
+Authors@R: person("Daniel", "Edi", email = "danieledi2026@gmail.com", role = c("aut", "cre"))
+Description: Ongoing surveillance of item parameter drift for continuous
+    testing programs and pre-equated item banks. Estimates item difficulty in
+    rolling calibration windows, runs sequential CUSUM detection with
+    change-point estimation, separates gradual drift from abrupt jumps,
+    tunes alarm thresholds for a bank-wide false-alarm target by simulation
+    on the program's own design, quantifies score and pass-rate impact, and
+    records recommended actions in an audit log.
+License: MIT + file LICENSE
+URL: https://github.com/edidatasolutions/driftwatch, https://edidatasolutions.github.io/driftwatch/
+BugReports: https://github.com/edidatasolutions/driftwatch/issues
+Encoding: UTF-8
+Depends: R (>= 4.1)
+Imports: stats, utils
+Suggests: knitr, markdown
+VignetteBuilder: knitr
+Config/roxygen2/version: 8.1.0

@@ -1,0 +1,75 @@
+---
+title: "Continuous drift monitoring for an item bank"
+output: markdown::html_format
+vignette: >
+  %\VignetteIndexEntry{Continuous drift monitoring for an item bank}
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+Most drift checks compare two calibrations at equating time. driftwatch
+monitors every calibration window and asks *when* an item started drifting,
+*how* (gradual trend or abrupt jump), and *what to do about it*.
+
+## Data
+
+A bank of 120 items is administered over 30 windows. In the simulation, some
+items drift gradually and some jump abruptly.
+
+```{r}
+library(driftwatch)
+sim <- dw_simulate(n_items = 120, n_windows = 30, mean_n = 70,
+                   onset_range = c(5, 18), seed = 7)
+table(sim$truth$type)
+```
+
+## Window estimates
+
+```{r}
+est <- dw_estimate(sim$responses, sim$bank)
+round(est$z[1:4, 1:8], 2)
+```
+
+## Set the alarm threshold for your bank
+
+`dw_tune()` regenerates your own design under no drift and picks the CUSUM
+threshold that gives the target false-alarm probability per item over the
+horizon.
+
+```{r}
+tu <- dw_tune(est, target = 0.02, n_rep = 4, seed = 1)
+tu$h
+```
+
+## Monitor
+
+```{r}
+mon <- dw_monitor(est, h = tu$h)
+mon
+table(alarm = mon$items$alarm, truth = sim$truth$type)
+```
+
+Soon after an alarm, a short ramp can look like a step; such items are marked
+`undetermined` until more windows arrive.
+
+## Act, and record why
+
+```{r}
+log <- dw_actions(mon, anchors = sim$bank$item[1:20], analyst = "psychometrics")
+head(log[c("item", "alarm_window", "type", "magnitude", "action")])
+```
+
+## What does drift do to scores?
+
+```{r}
+flagged <- mon$items$item[mon$items$alarm]
+drifted <- sim$truth$item[sim$truth$type != "stable"]
+form <- c(head(drifted, 8), head(setdiff(sim$bank$item, drifted), 32))
+last <- est$b_hat[, ncol(est$b_hat)]
+dw_impact(form, sim$bank, sim$b_path[, ncol(sim$b_path)], flagged,
+          recalibrated = last[flagged], cut = 0.5)
+```
