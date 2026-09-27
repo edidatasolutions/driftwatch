@@ -8,16 +8,15 @@ tags:
   - change-point detection
 authors:
   - name: Daniel Edi
-    orcid: 0000-0000-0000-0000   # TODO: your ORCID
     affiliation: 1
 affiliations:
-  - name: TODO affiliation
+  - name: Independent Researcher
     index: 1
 date: 27 September 2026
 bibliography: paper.bib
 ---
 
-<!-- DRAFT. Verify every reference and number before submission. Check the
+<!-- DRAFT. Verify every reference and number before submission. Add your ORCID under the author (orcid: 0000-...) once you have one. Check the
 journal's policy on disclosing AI-assisted software and writing. -->
 
 # Summary
@@ -55,6 +54,6 @@ of the period. Recalibrating flagged items reduced the pass-rate error on a
 
 # Acknowledgements
 
-TODO.
+Software development and drafting were assisted by Claude (Anthropic). The author designed the methods, reviewed and validated all code and results, and takes full responsibility for the content.
 
 # References
