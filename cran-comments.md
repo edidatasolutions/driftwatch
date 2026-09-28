@@ -13,6 +13,9 @@ This is the first submission of driftwatch.
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+* Words flagged as possibly misspelled are author names of cited references
+  (Veerkamp, Glas), the standard abbreviation CUSUM (cumulative sum), and
+  "pre" from "pre-equated".
 
 ## Notes for the reviewer
 
