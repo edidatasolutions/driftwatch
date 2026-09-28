@@ -95,3 +95,10 @@ Done: `dw_simulate`, `dw_estimate`, `dw_tune`, `dw_monitor`,
 examinee ability treated as known. Next: 2PL discrimination drift,
 ability uncertainty, anchor-set re-linking after removals, and a
 per-item run-length (ARL) view.
+
+## Getting help and contributing
+
+Questions and bug reports:
+<https://github.com/edidatasolutions/driftwatch/issues>. See
+[CONTRIBUTING.md](https://edidatasolutions.github.io/driftwatch/CONTRIBUTING.md)
+for how to report problems, get help, or contribute code.
