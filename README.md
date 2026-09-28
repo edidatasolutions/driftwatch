@@ -43,8 +43,8 @@ pak::pak("edidatasolutions/driftwatch")
    under no drift for the program's actual items, windows, sample sizes and
    examinees, then reruns estimation and CUSUM. This matters: each item's
    bank error is shared by every window and accumulates in the CUSUM. The
-   design-based threshold (h ≈ 9.4) is far above the iid-normal one (≈ 6.9),
-   and only the former hits the false-alarm target.
+   design-based threshold (h ≈ 9.5) is far above the iid-normal one (≈ 6.9),
+   and only the former meets the false-alarm target.
 4. **Gradual vs abrupt.** Step and ramp models are fitted with a profiled
    change point, and the log likelihood ratio decides between them. With weak
    evidence the type is `undetermined` rather than guessed.
@@ -53,31 +53,32 @@ pak::pak("edidatasolutions/driftwatch")
    the anchor set, each with a written rationale, threshold settings, analyst
    and timestamp.
 
-## Validation (known truth, 5 replications, `inst/validation/known_truth.R`)
+## Validation (known truth, 100 replications)
 
 300 items, 40 windows, ~80 responses per item per window. 10% of items drift
 gradually (0.02–0.06 logits/window) and 5% jump (0.4–1.0 logits).
 
 | | continuous (driftwatch) | two-point (first vs last 5 windows) |
 |---|---|---|
-| false alarms, stable items (target 1%) | 1.3% | — |
-| abrupt detected | 100%, median 3.4 windows after onset | 74%, at the end |
-| gradual detected | 89%, median 12 windows after onset | 78%, at the end |
-| abrupt onset error (windows) | 0.6 | — |
+| false alarms, stable items (target 1%) | 0.86% (iid-normal threshold: 4.0%) | 0.27% |
+| abrupt detected | 99%, median 4.1 windows after onset | 72%, at the end |
+| gradual detected | 83%, median 12.5 windows after onset | 73%, at the end |
+| abrupt onset error (windows) | 1.1 | — |
 
 Drift-type classification:
 
 | data used | abrupt: typed / accuracy | gradual: typed / accuracy |
 |---|---|---|
-| alarm + 3 windows | 79% / 98% | 47% / 65% |
-| all 40 windows | 93% / 100% | 74% / 88% |
+| alarm + 3 windows | 78% / 94% | 51% / 65% |
+| all 40 windows | 94% / 99% | 78% / 89% |
 
 Gradual drift is hard to type soon after an alarm, because a short ramp looks
 like a step. Reclassify as windows accumulate.
 
 Score impact (60-item form with 12 drifted items, cut at theta = 0.5):
-keeping banked values mis-states the pass rate by -1.3 points; recalibrating
-flagged items cuts that to -0.2 points, and removing them to -0.15.
+keeping banked values mis-states the pass rate by -0.8 points; removing or
+recalibrating the flagged items brings the error to about 0 (within ±0.01
+points).
 
 ## Status and assumptions
 
