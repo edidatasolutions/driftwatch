@@ -82,7 +82,7 @@
 <li>
 <strong>Two-sided CUSUM</strong> on <code>z</code> (reference value <code>k</code>, threshold <code>h</code>).</li>
 <li>
-<strong>Threshold tuning on your own design.</strong> <code><a href="reference/dw_tune.html">dw_tune()</a></code> regenerates responses under no drift for the program’s actual items, windows, sample sizes and examinees, then reruns estimation and CUSUM. This matters: each item’s bank error is shared by every window and accumulates in the CUSUM. The design-based threshold (h ≈ 9.4) is far above the iid-normal one (≈ 6.9), and only the former hits the false-alarm target.</li>
+<strong>Threshold tuning on your own design.</strong> <code><a href="reference/dw_tune.html">dw_tune()</a></code> regenerates responses under no drift for the program’s actual items, windows, sample sizes and examinees, then reruns estimation and CUSUM. This matters: each item’s bank error is shared by every window and accumulates in the CUSUM. The design-based threshold (h ≈ 9.5) is far above the iid-normal one (≈ 6.9), and only the former meets the false-alarm target.</li>
 <li>
 <strong>Gradual vs abrupt.</strong> Step and ramp models are fitted with a profiled change point, and the log likelihood ratio decides between them. With weak evidence the type is <code>undetermined</code> rather than guessed.</li>
 <li>
@@ -90,7 +90,7 @@
 </ol>
 </div>
 <div class="section level2">
-<h2 id="validation-known-truth-5-replications-instvalidationknown_truthr">Validation (known truth, 5 replications, <code>inst/validation/known_truth.R</code>)<a class="anchor" aria-label="anchor" href="#validation-known-truth-5-replications-instvalidationknown_truthr"></a>
+<h2 id="validation-known-truth-100-replications">Validation (known truth, 100 replications)<a class="anchor" aria-label="anchor" href="#validation-known-truth-100-replications"></a>
 </h2>
 <p>300 items, 40 windows, ~80 responses per item per window. 10% of items drift gradually (0.02–0.06 logits/window) and 5% jump (0.4–1.0 logits).</p>
 <table class="table">
@@ -107,22 +107,22 @@
 <tbody>
 <tr>
 <td>false alarms, stable items (target 1%)</td>
-<td>1.3%</td>
-<td>—</td>
+<td>0.86% (iid-normal threshold: 4.0%)</td>
+<td>0.27%</td>
 </tr>
 <tr>
 <td>abrupt detected</td>
-<td>100%, median 3.4 windows after onset</td>
-<td>74%, at the end</td>
+<td>99%, median 4.1 windows after onset</td>
+<td>72%, at the end</td>
 </tr>
 <tr>
 <td>gradual detected</td>
-<td>89%, median 12 windows after onset</td>
-<td>78%, at the end</td>
+<td>83%, median 12.5 windows after onset</td>
+<td>73%, at the end</td>
 </tr>
 <tr>
 <td>abrupt onset error (windows)</td>
-<td>0.6</td>
+<td>1.1</td>
 <td>—</td>
 </tr>
 </tbody>
@@ -137,18 +137,18 @@
 <tbody>
 <tr>
 <td>alarm + 3 windows</td>
-<td>79% / 98%</td>
-<td>47% / 65%</td>
+<td>78% / 94%</td>
+<td>51% / 65%</td>
 </tr>
 <tr>
 <td>all 40 windows</td>
-<td>93% / 100%</td>
-<td>74% / 88%</td>
+<td>94% / 99%</td>
+<td>78% / 89%</td>
 </tr>
 </tbody>
 </table>
 <p>Gradual drift is hard to type soon after an alarm, because a short ramp looks like a step. Reclassify as windows accumulate.</p>
-<p>Score impact (60-item form with 12 drifted items, cut at theta = 0.5): keeping banked values mis-states the pass rate by -1.3 points; recalibrating flagged items cuts that to -0.2 points, and removing them to -0.15.</p>
+<p>Score impact (60-item form with 12 drifted items, cut at theta = 0.5): keeping banked values mis-states the pass rate by -0.8 points; removing or recalibrating the flagged items brings the error to about 0 (within ±0.01 points).</p>
 </div>
 <div class="section level2">
 <h2 id="status-and-assumptions">Status and assumptions<a class="anchor" aria-label="anchor" href="#status-and-assumptions"></a>
