@@ -1,5 +1,7 @@
 # driftwatch
 
+[![CRAN status](https://www.r-pkg.org/badges/version/driftwatch)](https://CRAN.R-project.org/package=driftwatch)
+
 **Not "did it drift?" but "when, how, and what should we do?"**
 
 Most drift checks compare two calibrations at equating time. Continuous
@@ -20,7 +22,7 @@ dw_impact(form_ids, sim$bank, current_b, flagged)    # score / pass-rate impact
 
 ## Installation
 
-From CRAN (once released):
+From CRAN:
 
 ```r
 install.packages("driftwatch")
