@@ -2,6 +2,8 @@
 
 ## driftwatch 0.1.0
 
+CRAN release: 2026-10-07
+
 - Initial release.
 - Window-level Rasch difficulty estimation
   ([`dw_estimate()`](https://edidatasolutions.github.io/driftwatch/reference/dw_estimate.md)).
