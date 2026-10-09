@@ -10,3 +10,9 @@ dev/*.rds
 
 paper/manuscript.md
 paper/*.docx
+paper/apm/
+paper/figures/
+paper/arxiv/
+inst/validation/*.rds
+inst/validation/*_output.txt
+inst/validation/*.log
