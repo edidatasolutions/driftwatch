@@ -103,5 +103,5 @@ per-item run-length (ARL) view.
 
 Questions and bug reports:
 <https://github.com/edidatasolutions/driftwatch/issues>. See
-[CONTRIBUTING.md](https://edidatasolutions.github.io/driftwatch/CONTRIBUTING.md)
+[CONTRIBUTING.md](https://github.com/edidatasolutions/driftwatch/blob/main/.github/CONTRIBUTING.md)
 for how to report problems, get help, or contribute code.
