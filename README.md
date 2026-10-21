@@ -92,5 +92,5 @@ re-linking after removals, and a per-item run-length (ARL) view.
 ## Getting help and contributing
 
 Questions and bug reports: https://github.com/edidatasolutions/driftwatch/issues. See
-[CONTRIBUTING.md](.github/CONTRIBUTING.md) for how to report problems, get
+[CONTRIBUTING.md](https://github.com/edidatasolutions/driftwatch/blob/main/.github/CONTRIBUTING.md) for how to report problems, get
 help, or contribute code.
